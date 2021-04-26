@@ -3,9 +3,9 @@ pipeline {
     stages {
         stage('PREPARE'){
             steps {
-                sh "sed -i 's|@DESIGN_URL@|${DESIGN_URL}|' requirements.txt"
-                sh "cat requirements.txt"
-                sh "printenv"
+                bat "sed -i 's|@DESIGN_URL@|${DESIGN_URL}|' requirements.txt"
+                bat "cat requirements.txt"
+                bat "printenv"
                }
         }
     }
