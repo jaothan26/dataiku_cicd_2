@@ -10,6 +10,8 @@ pipeline {
                 sh "sed -i 's|@DESIGN_URL@|${DESIGN_URL}|' requirements.txt"
                 sh "cat requirements.txt"
                 sh "printenv"
-            }
+               }
         }
-        }
+    }
+}
+
