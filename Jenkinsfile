@@ -7,9 +7,6 @@ pipeline {
         stage('PREPARE'){
             steps {
                 sh 'echo ${bundle_name}'
-                sh "sed -i 's|@DESIGN_URL@|${DESIGN_URL}|' requirements.txt"
-                sh "cat requirements.txt"
-                sh "printenv"
                }
         }
     }
