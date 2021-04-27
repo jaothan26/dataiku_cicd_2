@@ -1,8 +1,5 @@
 pipeline {
     agent { label 'master' }
-    stages {
-        stage('build') {
-            steps {
                 def getCommandOutput(cmd) {
                     if (isUnix()){
                         return sh(returnStdout:true , script: '#!/bin/sh -e\n' + cmd).trim()
@@ -13,9 +10,8 @@ pipeline {
                     } 
                 }      
             }
-        }
-    }
-}
+        
+  
 
 
 
