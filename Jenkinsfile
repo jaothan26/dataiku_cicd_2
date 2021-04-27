@@ -4,9 +4,10 @@ pipeline {
         stage('build') {
             steps {
                 echo "Hello World!"
-                sh "echo Hello from the shell"
-                sh "hostname"
-                sh "uptime"
+                echo env.PATH
+                bat 'wmic computersystem get name'
+                bat 'echo %PATH%'
+                echo bat(returnStdout: true, script: 'set')
             }
         }
     }
