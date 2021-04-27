@@ -1,13 +1,13 @@
 pipeline {
-    agent any
+    agent { label 'master' }
     stages {
-        stage('PREPARE'){
+        stage('build') {
             steps {
-                bat "sed -i 's|@DESIGN_URL@|${DESIGN_URL}|' requirements.txt"
-                bat "cat requirements.txt"
-                bat "printenv"
-               }
+                echo "Hello World!"
+                sh "echo Hello from the shell"
+                sh "hostname"
+                sh "uptime"
+            }
         }
     }
 }
-
