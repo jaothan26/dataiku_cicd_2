@@ -3,12 +3,19 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                echo "Hello World!"
-                echo env.PATH
-                bat 'wmic computersystem get name'
-                bat 'echo %PATH%'
-                echo bat(returnStdout: true, script: 'set')
+                def getCommandOutput(cmd) {
+                    if (isUnix()){
+                        return sh(returnStdout:true , script: '#!/bin/sh -e\n' + cmd).trim()
+                    } else{
+                        stdout = bat(returnStdout:true , script: cmd).trim()
+                        result = stdout.readLines().drop(1).join(" ")       
+                        return result
+                    } 
+                }      
             }
         }
     }
 }
+
+
+
