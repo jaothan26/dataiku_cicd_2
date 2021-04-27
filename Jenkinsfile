@@ -1,11 +1,14 @@
 pipeline {
     agent { label 'master' }
-    stage('Checkout'){
-        stdout = bat(returnStdout: true, script: 'git rev-parse HEAD')
-        println("stdout ################ " + stdout + " ####################")
-   }
+    stages {
+        stage('build') {
+            steps {
+                echo "Hello World!"
+                echo env.PATH
+                bat 'wmic computersystem get name'
+                bat 'echo %PATH%'
+                echo bat(returnStdout: true, script: 'set')
+            }
+        }
+    }
 }
-  
-
-
-
